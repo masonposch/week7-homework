@@ -13,16 +13,15 @@ $('#submit').on('click', function(){
 	newTrainName = $('#addTrainName').val().trim();
 	newTrainDestination = $('#addTrainDestination').val().trim();
 	newFirstTrainTime = $('#addFirstTrainTime').val().trim();
-	var trainTimeSplit = newFirstTrainTime.split(':');
-	var trainTimeRaw = trainTimeSplit[0] + trainTimeSplit[1];
 	newTrainFrequency= parseInt($('#addTrainFrequency').val().trim());
 
-	var currentTime = new Date(new Date().getTime()).toLocaleTimeString(); 
+	var currentTime = moment().format('h:mm:ss');
+
 
 
 	console.log(newTrainName);
 	console.log(newTrainDestination);
-	console.log(trainTimeRaw);
+	console.log(newFirstTrainTime);
 	console.log(newTrainFrequency);
 	console.log(currentTime);
 });
