@@ -29,9 +29,15 @@ $('#submit').on('click', function(){
 	newTrainName = $('#addTrainName').val().trim();
 	newTrainDestination = $('#addTrainDestination').val().trim();
 	newTrainFrequency= parseInt($('#addTrainFrequency').val().trim());
-	newFirstTrainTime = $('#addFirstTrainTime').val().trim();
 
-	var currentTime = moment().format('hh:mm');
+	newFirstTrainTime = $('#addFirstTrainTime').val().trim();
+	var currentTime = moment().format('HH:mm');
+
+	var firstTimeSeconds = newFirstTrainTime.split(/:/);
+	var newFirstTimeSeconds = firstTimeSeconds[0] * 3600 + firstTimeSeconds[1] * 60;
+
+	var currentTimeSeconds = currentTime.split(/:/);
+	var newCurrentTimeSeconds = currentTimeSeconds[0] * 3600 + currentTimeSeconds[1] * 60;
 
 
 
@@ -40,6 +46,8 @@ $('#submit').on('click', function(){
 	console.log(newTrainFrequency);
 	console.log(newFirstTrainTime);
 	console.log(currentTime);
+	console.log(newFirstTimeSeconds);
+	console.log(newCurrentTimeSeconds);
 
 	$('#addTrainName').val("");
 	$('#addTrainDestination').val("");
