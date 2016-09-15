@@ -33,12 +33,26 @@ $('#submit').on('click', function(){
 	newFirstTrainTime = $('#addFirstTrainTime').val().trim();
 	var currentTime = moment().format('HH:mm');
 
-	var firstTimeSeconds = newFirstTrainTime.split(/:/);
-	var newFirstTimeSeconds = firstTimeSeconds[0] * 3600 + firstTimeSeconds[1] * 60;
+		//Change the currentTime and firstTrainTime into seconds only
+		var firstTimeSeconds = newFirstTrainTime.split(/:/);
+		var newFirstTimeSeconds = firstTimeSeconds[0] * 3600 + firstTimeSeconds[1] * 60;
 
-	var currentTimeSeconds = currentTime.split(/:/);
-	var newCurrentTimeSeconds = currentTimeSeconds[0] * 3600 + currentTimeSeconds[1] * 60;
+		var currentTimeSeconds = currentTime.split(/:/);
+		var newCurrentTimeSeconds = currentTimeSeconds[0] * 3600 + currentTimeSeconds[1] * 60;
 
+		//Create a variable that changes the train frequency into seconds
+		var frequencyIntoSeconds = newTrainFrequency * 60;
+
+		//Create new variable to find the difference between currentTime and firstTrainTime
+		var timeDifference = newCurrentTimeSeconds - newFirstTimeSeconds;
+
+		//Create a new variable to divide the time difference by the train frequency
+		var x = timeDifference / frequencyIntoSeconds;
+
+		//Create a variable to find the time of the next train (frequency - x)
+		var nextTrainTimeSeconds = frequencyIntoSeconds - x;
+
+		//Create variable to change the nextTrainTrainTimeSeconds into time
 
 
 	console.log(newTrainName);
@@ -47,7 +61,11 @@ $('#submit').on('click', function(){
 	console.log(newFirstTrainTime);
 	console.log(currentTime);
 	console.log(newFirstTimeSeconds);
+	console.log(frequencyIntoSeconds);
 	console.log(newCurrentTimeSeconds);
+	console.log(timeDifference);
+	console.log(x);
+	console.log(nextTrainTimeSeconds);
 
 	$('#addTrainName').val("");
 	$('#addTrainDestination').val("");
