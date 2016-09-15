@@ -53,6 +53,7 @@ $('#submit').on('click', function(){
 		var nextTrainTimeSeconds = frequencyIntoSeconds - x;
 
 		//Create variable to change the nextTrainTrainTimeSeconds into time
+		var theTrainTime = nextTrainTimeSeconds + newFirstTimeSeconds;
 
 
 	console.log(newTrainName);
@@ -66,6 +67,7 @@ $('#submit').on('click', function(){
 	console.log(timeDifference);
 	console.log(x);
 	console.log(nextTrainTimeSeconds);
+	console.log(theTrainTime);
 
 	$('#addTrainName').val("");
 	$('#addTrainDestination').val("");
