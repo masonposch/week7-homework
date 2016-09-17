@@ -28,22 +28,25 @@ var minutesAway;
 $('#submit').on('click', function(){
 	newTrainName = $('#addTrainName').val().trim();
 	newTrainDestination = $('#addTrainDestination').val().trim();
-	newTrainFrequency= parseInt($('#addTrainFrequency').val().trim());
+	newTrainFrequency= $('#addTrainFrequency').val().trim();
 
 	newFirstTrainTime = $('#addFirstTrainTime').val().trim();
 	var currentTime = moment().format('HH:mm');
+	var newerFirstTrainTime = moment(newFirstTrainTime, 'HH:mm');
+
+	var test = currentTime - newerFirstTrainTime;
 
 
 
-		// //Change the currentTime and firstTrainTime into seconds only
-		// var firstTimeSeconds = newFirstTrainTime.split(/:/);
-		// var newFirstTimeMinutes = firstTimeSeconds[0] * 60 + firstTimeSeconds[1];
+		//Change the currentTime and firstTrainTime into seconds only
+		var firstTimeSeconds = newFirstTrainTime.split(/:/);
+		var newFirstTimeMinutes = firstTimeSeconds[0] * 60 + firstTimeSeconds[1];
 
-		// var currentTimeSeconds = currentTime.split(/:/);
-		// var newCurrentTimeMinutes = currentTimeSeconds[0] * 60 + currentTimeSeconds[1];
+		var currentTimeSeconds = currentTime.split(/:/);
+		var newCurrentTimeMinutes = currentTimeSeconds[0] * 60 + currentTimeSeconds[1];
 
 		//Create new variable to find the difference between currentTime and firstTrainTime
-		var timeDifference = moment().diff(moment(newFirstTrainTime, 'minutes'));
+		var timeDifference = newCurrentTimeMinutes - newFirstTimeMinutes;
 
 		// //Create a new variable to divide the time difference by the train frequency
 		// var x = timeDifference / newTrainFrequency;
@@ -70,7 +73,7 @@ $('#submit').on('click', function(){
 	// console.log(nextTrainTimeSeconds);
 	// console.log(theTrainTime);
 	// console.log(test);
-	console.log("Time difference: " + timeDifference);
+	console.log(timeDifference);
 
 	$('#addTrainName').val("");
 	$('#addTrainDestination').val("");
